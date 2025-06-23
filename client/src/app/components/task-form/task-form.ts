@@ -15,9 +15,9 @@ export class TaskForm implements OnInit {
 
   ngOnInit(): void {
     this.taskFormGroup = this.fb.group({
-      title: ['', [Validators.required, Validators.minLength(10)]],
+      title: ['', [Validators.required, Validators.minLength(5)]],
       completed: [false],
-      createdAt: [new Date('July 20, 69 00:20:18')]
+      createdAt: [Date.now]
     });
   }
 
