@@ -1,0 +1,14 @@
+<div class="flex">
+  <ng-container *ngIf="!isUpdateForm">
+    {{task.title}}
+    <button (click)="onUpdate(task)">Update</button>
+  </ng-container>
+  <ng-container *ngIf="isUpdateForm">
+    <input type="text" [(ngModel)]="updatedTitle" />
+    <button (click)="onCancel()">Cancel</button>
+    <button (click)="updateItem(task, updatedTitle)">Save</button>
+  </ng-container>
+  {{task._id}}
+  {{task.createdAt}}
+  <button (click)=" onDelete(task)">Delete</button>
+</div>

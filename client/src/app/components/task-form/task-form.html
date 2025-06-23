@@ -1,0 +1,10 @@
+<form [formGroup]="taskFormGroup" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="title">Task Title:</label>
+    <input type="text" id="title" formControlName="title" />
+    <div *ngIf="taskFormGroup.get('title')?.invalid && taskFormGroup.get('title')?.touched" style="color: red;">
+      Title is required and must be at least 10 characters long.
+    </div>
+  </div>
+  <button type="submit" [disabled]="taskFormGroup.invalid">Add Task</button>
+</form>

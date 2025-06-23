@@ -1,0 +1,25 @@
+# Node.js server
+server/node_modules/
+server/.env
+
+# === FRONTEND (Angular) ===
+client/node_modules/
+client/dist/
+client/tmp/
+client/out-tsc
+client/.angular
+client/.vscode/
+client/.idea/
+client/.history/
+client/coverage
+
+# === Common ===
+.DS_Store
+Thumbs.db
+*.log
+*.sublime-workspace
+*.launch
+
+
+# System files
+.DS_Store

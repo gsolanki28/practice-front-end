@@ -1,0 +1,9 @@
+<h2>
+  Task List
+</h2>
+
+<ul class="flex dc">
+  <li class="flex" *ngFor="let item of taskLists">
+    <app-task-list-item [task]="item"></app-task-list-item>
+  </li>
+</ul>
