@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TaskForm } from './components/task-form/task-form';
 import { TaskListItem } from './components/task-list-item/task-list-item';
+import { UserRegister } from './components/user-register/user-register';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { TaskListItem } from './components/task-list-item/task-list-item';
     App,
     TaskList,
     TaskForm,
-    TaskListItem
+    TaskListItem,
+    UserRegister
   ],
   imports: [
     BrowserModule,

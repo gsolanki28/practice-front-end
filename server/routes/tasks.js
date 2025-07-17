@@ -5,7 +5,6 @@ const Task = require('../models/Task');
 // GET all tasks
 router.get('/', async (req, res) => {
   const tasks = await Task.find();
-  tasks.sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime())
   res.json(tasks);
 });
 

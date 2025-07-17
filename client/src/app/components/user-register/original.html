@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Equipment Ticket Sample</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      line-height: 16px;
+      color: #000
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    .layout {
+      height: 100%;
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    .content-cell {
+      vertical-align: top;
+      height: 100%;
+    }
+
+    .header-title {
+      text-align: center;
+      width: 60%
+    }
+
+    .header-logo {
+      text-align: right;
+      width: 20%
+    }
+
+    .section-border {
+      border-top: 2px solid #000;
+      border-bottom: 2px solid #000;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .sub-header-col {
+      width: 33.33%;
+      padding: 8px
+    }
+
+    .sub-header-middle {
+      border-left: 2px solid #000;
+      border-right: 2px solid #000
+    }
+
+    .info-table th,
+    .info-table td {
+      padding: 4px
+    }
+
+    .info-table th {
+      background-color: #ccc
+    }
+
+    .text-center {
+      text-align: center
+    }
+
+    .text-left {
+      text-align: left
+    }
+
+    .text-right {
+      text-align: right
+    }
+
+    .summary-table {
+      float: right;
+      text-align: right
+    }
+
+    .signature-box {
+      width: 400px;
+      padding: 12px;
+      background-color: #F2F2F3;
+      height: 170px;
+      border-radius: 8px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .signature-label {
+      font-weight: bold
+    }
+
+    .signature-space {
+      height: 120px
+    }
+
+    .signature-box-bottom {
+      padding-top: 8px;
+      border-top: 1px solid #ccc
+    }
+
+    .note-text {
+      color: #afafaf;
+      margin-top: 8px;
+      line-height: 16px
+    }
+
+    .pb-24 {
+      padding-bottom: 24px
+    }
+
+    .pt-16 {
+      padding-top: 16px
+    }
+
+    .w-20 {
+      width: 20%
+    }
+
+    .w-full {
+      width: 100%
+    }
+
+    .h-full {
+      height: 100%
+    }
+
+    .font-bold {
+      font-weight: bold
+    }
+
+    .vertical-top {
+      vertical-align: top;
+    }
+  </style>
+</head>
+
+<body>
+  <table class='layout'>
+    <!-- Header -->
+    <tr>
+      <td class='pb-16'>
+        <table class='w-full'>
+          <tr>
+            <td class='w-20'></td>
+            <td class='header-title'>Equipment Ticket <br /> Sales Order {{SalesOrder}} | Delivery {{DeliveryId}}</td>
+            <td class='header-logo'><img width='54' src='{{SlbBlueLogo}}' alt='slb-logo'></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table class='section-border'>
+          <tr>
+            <td class='sub-header-col'>
+              <table>
+                <tr>
+                  <td class='font-bold'>Customer:</td>
+                  <td>{{CustomerName}}</td>
+                </tr>
+                <tr>
+                  <td class='font-bold'>Sold To:</td>
+                  <td>{{SoldTo}}</td>
+                </tr>
+                <tr>
+                  <td class='font-bold'>Quotation Number:</td>
+                  <td>{{QuotationNumber}}</td>
+                </tr>
+                <tr>
+                  <td class='font-bold'>Buyer Name:</td>
+                  <td>{{BuyerName}}</td>
+                </tr>
+                <tr>
+                  <td class='font-bold'>Customer Reference:</td>
+                  <td>{{CustomerReference}}</td>
+                </tr>
+              </table>
+            </td>
+            <td class='sub-header-col sub-header-middle'>
+              <table>
+                <tr>
+                  <td class='font-bold'>Functional Location:</td>
+                  <td>{{FunctionalLocation}}</td>
+                </tr>
+                <tr>
+                  <td class='font-bold'>Description:</td>
+                  <td>{{Description}}</td>
+                </tr>
+                <tr>
+                  <td class='font-bold'>Rig:</td>
+                  <td>{{RigName}}</td>
+                </tr>
+                <tr>
+                  <td class='font-bold'>Well:</td>
+                  <td>{{WellName}}</td>
+                </tr>
+                <tr>
+                  <td class='font-bold'>UWI/API:</td>
+                  <td>{{UwiOrApi}}</td>
+                </tr>
+              </table>
+            </td>
+            <td class='sub-header-col'>
+              <table>
+                <tr>
+                  <td class='font-bold'>CDS ID:</td>
+                  <td>{{CdsId}}</td>
+                </tr>
+                <tr>
+                  <td class='font-bold'>Delivery ID:</td>
+                  <td>{{DeliveryId}}</td>
+                </tr>
+                <tr>
+                  <td class='font-bold'>Delivery Date:</td>
+                  <td>{{DeliveryDate}}</td>
+                </tr>
+                <tr>
+                  <td class='font-bold'>Sales Order #:</td>
+                  <td>{{SalesOrder}}</td>
+                </tr>
+                <tr>
+                  <td class='font-bold'>SLB Representative:</td>
+                  <td>{{SLBRepresentative}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <!-- Info -->
+    <tr>
+      <td class='content-cell'>
+        <table class='h-full w-full'>
+          <tr>
+            <td class='h-full vertical-top'>
+              <table class='w-full'>
+                <tr>
+                  <td class='pt-16 pb-24'>
+                    <table class='info-table w-full'>
+                      <thead>
+                        <tr>
+                          <th class='text-center'>#</th>
+                          <th class='text-left'>Part Number</th>
+                          <th class='text-left'>Description</th>
+                          <th class='text-center'>Qty</th>
+                          <th class='text-center'>UoM</th>
+                          <th class='text-center'>Price({{Currency}})</th>
+                          <th class='text-right'>Net Amount({{Currency}})</th>
+                        </tr>
+                      </thead>
+                      <tbody>{{LineItems}}</tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class='summary-table'>
+                      <table>
+                        <tr>
+                          <td>Net Amount ({{Currency}}):</td>
+                          <td>{{NetAmount}}</td>
+                        </tr>
+                        <tr>
+                          <td>Total Amount ({{Currency}}):</td>
+                          <td>{{TotalAmount}}</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="page-break-inside: avoid; break-inside: avoid;">
+              <div class='signature-box'>
+                <div class='signature-label'>Customer or Authorized Representative:</div>
+                <div class='signature-space'></div>
+                <table>
+                  <tr>
+                    <td class='signature-box-bottom'>
+                      <table class='w-full'>
+                        <tr>
+                          <td>{{CustomerName}}</td>
+                          <td class='text-right'>{{date}}</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <!-- Footer -->
+    <tr>
+      <td class='footer-cell'>
+        <div class='note-text'>The estimated charges shown above may be exclusive of tax and the final invoice will
+          include all applicable taxes. The services, equipment, materials and/or products covered by this field ticket
+          have been performed or received as set forth above and provided at the prices shown herein pursuant to the
+          master service agreement between customer and Schlumberger and, in the absence of an active MSA, pursuant to
+          the Schlumberger General Terms and Conditions.</div>
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>

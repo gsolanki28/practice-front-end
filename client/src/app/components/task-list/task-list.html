@@ -1,9 +1,23 @@
-<h2>
-  Task List
-</h2>
+<div class="flex dc">
+  <h2>
+    Task List
+  </h2>
+  <input type="text" [placeholder]="'search'" [(ngModel)]="searchText" (ngModelChange)="onSearch($event)">
+  <select name="filter" id="filter" (change)="onSelect($event)">
+    <option value="all">All</option>
+    <option value="active">Active</option>
+    <option value="completed">Completed</option>
+  </select>
 
-<ul class="flex dc">
-  <li class="flex" *ngFor="let item of taskLists">
-    <app-task-list-item [task]="item"></app-task-list-item>
-  </li>
-</ul>
+  <select name="sort" id="sort" (change)="onSort($event)">
+    <option value="default">default</option>
+    <option value="date">Sort by Date</option>
+    <option value="text">Text</option>
+  </select>
+
+  <ul class="flex dc">
+    <li class="flex" *ngFor="let taskItem of filteredTaskLists">
+      <app-task-list-item [task]="taskItem"></app-task-list-item>
+    </li>
+  </ul>
+</div>

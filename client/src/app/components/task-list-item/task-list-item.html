@@ -1,4 +1,5 @@
 <div class="flex">
+  <input type="checkbox" [checked]="task.completed">
   <ng-container *ngIf="!isUpdateForm">
     {{task.title}}
     <button (click)="onUpdate(task)">Update</button>
@@ -8,7 +9,6 @@
     <button (click)="onCancel()">Cancel</button>
     <button (click)="updateItem(task, updatedTitle)">Save</button>
   </ng-container>
-  {{task._id}}
-  {{task.createdAt}}
+  {{formattedDate}}
   <button (click)=" onDelete(task)">Delete</button>
 </div>

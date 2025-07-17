@@ -16,7 +16,7 @@ export class TaskForm implements OnInit {
   ngOnInit(): void {
     this.taskFormGroup = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(5)]],
-      completed: [false],
+      completed: [true],
       createdAt: [Date.now]
     });
   }
@@ -27,7 +27,7 @@ export class TaskForm implements OnInit {
     this.taskService.addTask(taskData).subscribe(() => {
       this.taskFormGroup.reset({
         title: '',
-        completed: false,
+        completed: true,
         createdAt: new Date()
       });
     });
