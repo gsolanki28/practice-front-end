@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TaskForm } from './components/task-form/task-form';
 import { TaskListItem } from './components/task-list-item/task-list-item';
 import { UserRegister } from './components/user-register/user-register';
+import { Login } from './components/login/login';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { UserRegister } from './components/user-register/user-register';
     TaskList,
     TaskForm,
     TaskListItem,
-    UserRegister
+    UserRegister,
+    Login
   ],
   imports: [
     BrowserModule,

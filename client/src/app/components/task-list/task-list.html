@@ -1,8 +1,8 @@
-<div class="flex dc">
+<div class="flex flex-col gap-4">
   <h2>
     Task List
   </h2>
-  <input type="text" [placeholder]="'search'" [(ngModel)]="searchText" (ngModelChange)="onSearch($event)">
+  <input class="search" type="text" [placeholder]="'search'" [(ngModel)]="searchText" (ngModelChange)="onSearch($event)">
   <select name="filter" id="filter" (change)="onSelect($event)">
     <option value="all">All</option>
     <option value="active">Active</option>
@@ -15,8 +15,8 @@
     <option value="text">Text</option>
   </select>
 
-  <ul class="flex dc">
-    <li class="flex" *ngFor="let taskItem of filteredTaskLists">
+  <ul class="flex flex-col gap-2">
+    <li class="flex gap-2" *ngFor="let taskItem of filteredTaskLists">
       <app-task-list-item [task]="taskItem"></app-task-list-item>
     </li>
   </ul>
