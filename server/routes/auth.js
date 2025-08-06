@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const verifyToken = require('./auth.middleware');
 
 // POST /api/auth/register
 router.post('/register', async (req, res) => {
@@ -30,7 +31,6 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-  debugger;
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
@@ -46,25 +46,13 @@ router.post('/login', async (req, res) => {
       return res.status(200).json({ status: 200, message: 'login success', token });
     }
   } catch (error) {
-    debugger;
     res.status(500).json({ message: 'Server error ?' });
   }
 })
 
 router.get('/profile', verifyToken, async (req, res) => {
   const user = await User.findById(req.userId);
-  res.json(user);
+  res.status(200).json({ status: 200, message: 'login success by token', user: {email: user.email, name: user.firstName} });
 });
-
-function verifyToken(req, res, next) {
-  const token = req.headers['authorization']?.split(' ')[1];
-  if (!token) return res.status(403).json({ message: 'Token missing' });
-
-  jwt.verify(token, 'your_secret_key', (err, decoded) => {
-    if (err) return res.status(401).json({ message: 'Invalid token' });
-    req.userId = decoded.userId;
-    next();
-  });
-}
 
 module.exports = router;

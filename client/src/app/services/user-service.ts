@@ -9,15 +9,15 @@ import { RegisterUser, User } from "../models/user";
 export class UserService {
   constructor(private http: HttpClient) { }
   getUser(user: User): Observable<any> {
-    return this.http.post('http://localhost:3000/login', user)
+    return this.http.post('http://localhost:3000/api/login', user)
   }
 
   saveUser(user: RegisterUser): Observable<any> {
-    return this.http.post('http://localhost:3000/register', user)
+    return this.http.post('http://localhost:3000/api/register', user)
   }
 
   identifyUser(token: string) {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get('http://localhost:3000/profile', { headers });
+    return this.http.get('http://localhost:3000/api/profile', { headers });
   }
 }

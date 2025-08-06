@@ -3,6 +3,7 @@ import { UserService } from '../../services/user-service';
 import { EmailValidator, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
+import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-login',
@@ -16,15 +17,18 @@ export class Login implements OnInit {
 
   private router = inject(Router);
 
-  constructor(private userService: UserService, private fb: FormBuilder) { }
+  constructor(
+    private userService: UserService,
+    private fb: FormBuilder,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.checkIfAlreadyLoggedIn();
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
     })
-
-    this.checkIfAlreadyLoggedIn();
   }
 
   checkValid() {
@@ -32,21 +36,18 @@ export class Login implements OnInit {
   }
 
   checkIfAlreadyLoggedIn() {
-    const token = localStorage.getItem('token');
-    if (token) {
-      return this.userService.identifyUser(token).subscribe((response) =>{
-        console.log(response);
-      });
-    }
-    else {
-      return false;
-    }
+    this.authService.isAuthenticated().subscribe((isAuth) => {
+      if (isAuth) {
+        this.router.navigate(['']);
+      }
+    });
   }
 
   login() {
+    console.log('Login clicked');
     this.userService.getUser(this.loginForm.getRawValue()).subscribe((response) => {
       localStorage.setItem('token', response.token);
-      this.router.navigate(['/home']);
+      this.router.navigate(['']);
     });
   }
 

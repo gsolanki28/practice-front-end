@@ -5,11 +5,12 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { TaskList } from './components/task-list/task-list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TaskForm } from './components/task-form/task-form';
 import { TaskListItem } from './components/task-list-item/task-list-item';
 import { UserRegister } from './components/user-register/user-register';
 import { Login } from './components/login/login';
+import { AuthInterceptor } from './auth-interceptor';
 
 
 @NgModule({
@@ -30,7 +31,12 @@ import { Login } from './components/login/login';
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true // allows multiple interceptors
+    }
   ],
   bootstrap: [App]
 })

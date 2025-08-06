@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { UserService } from './../../services/user-service';
+import { Component, inject, OnInit } from '@angular/core';
 import { Task } from '../../models/task';
 import { TaskService } from '../../services/task';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
@@ -13,17 +15,19 @@ export class TaskList implements OnInit {
   filteredTaskLists!: Task[];
   baseFilteredTaskLists!: Task[];
   searchText!: string;
+  private router = inject(Router);
 
   constructor(
-    private taskService: TaskService
+    private taskService: TaskService,
+    private UserService: UserService
   ) { }
 
   ngOnInit(): void {
     this.taskService.getTasks().subscribe((response) => {
       this.taskLists = response;
+      this.filteredTaskLists = this.taskLists;
+      this.baseFilteredTaskLists = this.taskLists;
     })
-    this.filteredTaskLists = this.taskLists;
-    this.baseFilteredTaskLists = this.taskLists;
   }
 
   onSelect(event: any) {
@@ -50,9 +54,13 @@ export class TaskList implements OnInit {
     }
   }
 
-  onSearch(event:any){
-    console.log(event);
+  onSearch(event: any) {
     this.filteredTaskLists = this.baseFilteredTaskLists.filter(task => task.title.includes(event))
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 
 }
